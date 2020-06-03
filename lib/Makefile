@@ -1,4 +1,5 @@
-SRC  =  src/perrno.cpp
+SRC  =  src/perrno.cpp \
+		src/splitter/splitter.cpp
 
 INCLUDE = ./include/
 

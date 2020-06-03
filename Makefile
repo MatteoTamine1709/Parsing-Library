@@ -11,7 +11,7 @@ NAME 	=	parser
 all:	build_lib $(NAME)
 
 $(NAME):
-	g++ -o $(NAME) $(SRC) $(LIB) $(INCLUDE)
+	g++ -g -o $(NAME) $(SRC) $(LIB) $(INCLUDE)
 
 clean:
 	make clean -C lib
