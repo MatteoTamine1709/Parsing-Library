@@ -14,11 +14,11 @@ $(NAME):
 	g++ -g -o $(NAME) $(SRC) $(LIB) $(INCLUDE)
 
 clean:
-	make clean -C lib
+	rm -rf $(NAME)
 
 fclean: clean
-	rm -rf $(NAME)
 	rm -rf $(OBJ)
+	rm -rf vg*
 
 re: fclean all
 
