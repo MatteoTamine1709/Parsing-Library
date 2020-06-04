@@ -9,8 +9,8 @@ Test(splitter_word_without_keep_suite, simple_word)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_word("Salut comment tu vas", {"comment"}, false);
-    vector<string> correct = {"Salut ", " tu vas"};
+    std::vector<std::string> ret = p.split_word("Salut comment tu vas", {"comment"}, false);
+    std::vector<std::string> correct = {"Salut ", " tu vas"};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());
@@ -24,8 +24,8 @@ Test(splitter_word_without_keep_suite, simple_word_no_input)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_word("", {" "}, false);
-    vector<string> correct = {""};
+    std::vector<std::string> ret = p.split_word("", {" "}, false);
+    std::vector<std::string> correct = {""};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());
@@ -39,8 +39,8 @@ Test(splitter_word_without_keep_suite, simple_word_only_split)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_word("     ", {" "}, false);
-    vector<string> correct = {""};
+    std::vector<std::string> ret = p.split_word("     ", {" "}, false);
+    std::vector<std::string> correct = {""};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());
@@ -54,8 +54,8 @@ Test(splitter_word_without_keep_suite, multiple_word)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_word("Salut comment tu vas", {" t", "mm"}, false);
-    vector<string> correct = {"Salut co", "ent", "u vas"};
+    std::vector<std::string> ret = p.split_word("Salut comment tu vas", {" t", "mm"}, false);
+    std::vector<std::string> correct = {"Salut co", "ent", "u vas"};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());
@@ -69,8 +69,8 @@ Test(splitter_word_without_keep_suite, multiple_word_no_input)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_word("", {" t", "mm"}, false);
-    vector<string> correct = {""};
+    std::vector<std::string> ret = p.split_word("", {" t", "mm"}, false);
+    std::vector<std::string> correct = {""};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());
@@ -84,8 +84,8 @@ Test(splitter_word_without_keep_suite, multiple_word_only_split)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_word(" tmm tmm tmm", {" t", "mm"}, false);
-    vector<string> correct = {""};
+    std::vector<std::string> ret = p.split_word(" tmm tmm tmm", {" t", "mm"}, false);
+    std::vector<std::string> correct = {""};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());

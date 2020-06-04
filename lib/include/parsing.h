@@ -4,14 +4,13 @@
 #include <string>
 #include <vector>
 #include "c_interface.h"
-using namespace std;
 
 class Parser
 {
 private:
 public:
-    vector<string> split_char(const string &str, const string &symb, bool save_split = false);
-    vector<string> split_word(const string &str, const vector<string> words, bool save_split = false);
+    std::vector<std::string> split_char(const std::string &str, const std::string &symb, bool save_split = false);
+    std::vector<std::string> split_word(const std::string &str, const std::vector<std::string> words, bool save_split = false);
     
 };
 

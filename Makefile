@@ -22,15 +22,13 @@ CRIT_TEST = 	tests/compare_string_vector.cpp 						\
 				tests/splitter/test_splitter_word_without_keep.cpp 		\
 				tests/splitter/test_splitter_word_keep.cpp
 
-CRIT_SRC 	= 	lib/src/perrno.cpp 						\
-				lib/src/splitter/splitter_char.cpp 		\
-				lib/src/splitter/splitter_word.cpp		\
-				lib/src/splitter/c_interface.cpp
+CRIT_SRC 	= 	lib/src/splitter/splitter_char.cpp 		\
+				lib/src/splitter/splitter_word.cpp
 
 all:	build_lib $(NAME)
 
 $(NAME):
-	g++ -o $(NAME) $(SRC) $(LIB) $(INCLUDE)
+	g++ -std=c++17 -o $(NAME) $(SRC) $(LIB) $(INCLUDE)
 
 clean:
 	rm -rf $(NAME)
@@ -48,7 +46,7 @@ fclean: clean crit_clean
 re: fclean all
 
 cre: re build_lib
-	g++ -g -o $(CNAME) $(CSRC) $(LIB) $(INCLUDE)
+	g++ -std=c++17 -g -o $(CNAME) $(CSRC) $(LIB) $(INCLUDE)
 
 build_lib:
 	make re -C lib/
@@ -56,12 +54,12 @@ build_lib:
 debug: CFLAGS += -g fclean all
 
 unit_test: re
-	g++ -o ${CRIT_NAME} ${CRIT_SRC} ${CRIT_FLAG} $(CRIT_TEST) ${INCLUDE} ${LIB}
+	g++ -std=c++17 -o ${CRIT_NAME} ${CRIT_SRC} ${CRIT_FLAG} $(CRIT_TEST) ${INCLUDE} ${LIB}
 	clear
 	./$(CRIT_NAME)
 
 branch: unit_test
-	gcovr --exclude tests/ --exclude lib/src/splitter/c_interface.cpp --branches
+	gcovr --exclude tests/ --branches
 
 coverage: unit_test
-	gcovr --exclude tests/ --exclude lib/src/splitter/c_interface.cpp
+	gcovr --exclude tests/

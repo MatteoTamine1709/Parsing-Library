@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "../../include/parsing.h"
 
-int is_symb(char c, const string symb)
+int is_symb(char c, const std::string symb)
 {
     for (int i = 0; symb[i]; i++)
         if (symb[i] == c || !c)
@@ -9,9 +9,9 @@ int is_symb(char c, const string symb)
     return (0);
 }
 
-vector<string> Parser::split_char(const string &str, const string &symb, bool save_split)
+std::vector<std::string> Parser::split_char(const std::string &str, const std::string &symb, bool save_split)
 {
-    vector<string> tab;
+    std::vector<std::string> tab;
     int i = 0;
 
     if (str.length() == 0) {
@@ -19,7 +19,7 @@ vector<string> Parser::split_char(const string &str, const string &symb, bool sa
         return (tab);
     }
     while (i < str.length()) {
-        string temp;
+        std::string temp;
         while (!is_symb(str[i], symb) && i < str.length()) {
             temp.push_back(str[i]);
             i++;

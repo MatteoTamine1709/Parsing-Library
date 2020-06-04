@@ -1,6 +1,6 @@
 #include "header.h"
 
-int compare_ret_correct(vector<string> ret, vector<string> correct)
+int compare_ret_correct(std::vector<std::string> ret, std::vector<std::string> correct)
 {
     int error = -1;
     for (int i = 0; i < ret.size(); i++)
