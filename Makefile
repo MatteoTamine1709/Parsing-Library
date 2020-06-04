@@ -6,6 +6,8 @@ CFLAGS = 	-W -Wall -Wextra
 
 LIB = -L./lib -lparsing
 
+CLIB = -L./lib -lcparsing
+
 INCLUDE = 	-I./include
 
 NAME 	=	parser
@@ -42,19 +44,23 @@ crit_clean:
 
 fclean: clean crit_clean
 	rm -rf vg*
+	make fclean -C lib/
 
 re: fclean all
 
-cre: re build_lib
-	g++ -std=c++17 -g -o $(CNAME) $(CSRC) $(LIB) $(INCLUDE)
+cre: fclean build_clib
+	g++ -std=c++17 -g -o $(CNAME) $(CSRC) $(CLIB) $(INCLUDE)
 
 build_lib:
-	make re -C lib/
+	make cpplib -C lib/
+
+build_clib:
+	make clib -C lib/
 
 debug: CFLAGS += -g fclean all
 
-unit_test: re
-	g++ -std=c++17 -o ${CRIT_NAME} ${CRIT_SRC} ${CRIT_FLAG} $(CRIT_TEST) ${INCLUDE} ${LIB}
+unit_test: fclean build_clib
+	g++ -std=c++17 -o ${CRIT_NAME} ${CRIT_SRC} ${CRIT_FLAG} $(CRIT_TEST) ${INCLUDE} ${CLIB}
 	clear
 	./$(CRIT_NAME)
 
