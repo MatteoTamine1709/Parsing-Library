@@ -3,14 +3,14 @@
 #include "header.h"
 #include "test_header.h"
 
-TestSuite(splitter_char_without_keep_suite);
+TestSuite(splitter_word_keep_suite);
 
-Test(splitter_char_without_keep_suite, simple_char)
+Test(splitter_word_keep_suite, simple_word)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_char("Salut comment tu vas", " ", false);
-    vector<string> correct = {"Salut", "comment", "tu", "vas"};
+    vector<string> ret = p.split_word("Salut comment tu vas", {"comment"}, true);
+    vector<string> correct = {"Salut ", "comment", " tu vas"};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());
@@ -20,11 +20,11 @@ Test(splitter_char_without_keep_suite, simple_char)
         error, ret[error].c_str(), error, correct[error].c_str());
 }
 
-Test(splitter_char_without_keep_suite, simple_char_no_input)
+Test(splitter_word_keep_suite, simple_word_no_input)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_char("", " ", false);
+    vector<string> ret = p.split_word("", {" "}, true);
     vector<string> correct = {""};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
@@ -35,11 +35,41 @@ Test(splitter_char_without_keep_suite, simple_char_no_input)
         error, ret[error].c_str(), error, correct[error].c_str());
 }
 
-Test(splitter_char_without_keep_suite, simple_char_only_split)
+Test(splitter_word_keep_suite, simple_word_only_split)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_char("     ", " ", false);
+    vector<string> ret = p.split_word("     ", {" "}, true);
+    vector<string> correct = {" ", " ", " ", " ", " "};
+
+    cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
+        ret.size(), correct.size());
+
+    error = compare_ret_correct(ret, correct);
+    cr_assert(error == -1, "Error on comparing string: ret[%d]:\"%s\" correct[%d]:\"%s\"",
+        error, ret[error].c_str(), error, correct[error].c_str());
+}
+
+Test(splitter_word_keep_suite, multiple_word)
+{
+    Parser p;
+    int error = -1;
+    vector<string> ret = p.split_word("Salut comment tu vas", {" t", "mm"}, true);
+    vector<string> correct = {"Salut co", "mm", "ent", " t", "u vas"};
+
+    cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
+        ret.size(), correct.size());
+
+    error = compare_ret_correct(ret, correct);
+    cr_assert(error == -1, "Error on comparing string: ret[%d]:\"%s\" correct[%d]:\"%s\"",
+        error, ret[error].c_str(), error, correct[error].c_str());
+}
+
+Test(splitter_word_keep_suite, multiple_word_no_input)
+{
+    Parser p;
+    int error = -1;
+    vector<string> ret = p.split_word("", {" t", "mm"}, true);
     vector<string> correct = {""};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
@@ -50,42 +80,12 @@ Test(splitter_char_without_keep_suite, simple_char_only_split)
         error, ret[error].c_str(), error, correct[error].c_str());
 }
 
-Test(splitter_char_without_keep_suite, multiple_char)
+Test(splitter_word_keep_suite, multiple_word_only_split)
 {
     Parser p;
     int error = -1;
-    vector<string> ret = p.split_char("Salut comment tu vas", " t", false);
-    vector<string> correct = {"Salu", "commen", "u", "vas"};
-
-    cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
-        ret.size(), correct.size());
-
-    error = compare_ret_correct(ret, correct);
-    cr_assert(error == -1, "Error on comparing string: ret[%d]:\"%s\" correct[%d]:\"%s\"",
-        error, ret[error].c_str(), error, correct[error].c_str());
-}
-
-Test(splitter_char_without_keep_suite, multiple_char_no_input)
-{
-    Parser p;
-    int error = -1;
-    vector<string> ret = p.split_char("", " t", false);
-    vector<string> correct = {""};
-
-    cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
-        ret.size(), correct.size());
-
-    error = compare_ret_correct(ret, correct);
-    cr_assert(error == -1, "Error on comparing string: ret[%d]:\"%s\" correct[%d]:\"%s\"",
-        error, ret[error].c_str(), error, correct[error].c_str());
-}
-
-Test(splitter_char_without_keep_suite, multiple_char_only_split)
-{
-    Parser p;
-    int error = -1;
-    vector<string> ret = p.split_char("     ttt", " t", false);
-    vector<string> correct = {""};
+    vector<string> ret = p.split_word(" tmm tmm tmm", {" t", "mm"}, true);
+    vector<string> correct = {" t", "mm", " t", "mm", " t", "mm"};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of words: ret:%d correct:%d",
         ret.size(), correct.size());

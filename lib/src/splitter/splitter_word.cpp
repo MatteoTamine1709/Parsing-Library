@@ -6,6 +6,10 @@ vector<string> Parser::split_word(const string &str, const vector<string> words,
     vector<string> tab;
     bool found = false;
 
+    if (str.length() == 0) {
+        tab.push_back("");
+        return (tab);
+    }
     string temp;
     for (int i = 0; i < str.length(); i++) {
         found = false;
@@ -33,5 +37,7 @@ vector<string> Parser::split_word(const string &str, const vector<string> words,
     }
     if (temp.length() > 0)
         tab.push_back(temp);
+    if (tab.size() == 0)
+        tab.push_back("");
     return (tab);
 }

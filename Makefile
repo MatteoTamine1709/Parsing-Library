@@ -16,8 +16,11 @@ CRIT_NAME 	= 	unit_tests
 
 CRIT_FLAG	= 	--coverage --verbose -lcriterion
 
-CRIT_TEST = 	tests/splitter/test_splitter_char_without_keep.cpp 		\
-				tests/splitter/test_splitter_char_keep.cpp
+CRIT_TEST = 	tests/compare_string_vector.cpp 						\
+				tests/splitter/test_splitter_char_without_keep.cpp 		\
+				tests/splitter/test_splitter_char_keep.cpp 				\
+				tests/splitter/test_splitter_word_without_keep.cpp 		\
+				tests/splitter/test_splitter_word_keep.cpp
 
 CRIT_SRC 	= 	lib/src/perrno.cpp 						\
 				lib/src/splitter/splitter_char.cpp 		\
@@ -34,11 +37,12 @@ clean:
 	rm -rf $(CNAME)
 	rm -rf $(CRIT_NAME)
 
-fclean: clean
+crit_clean:
 	rm -rf *.gcda
 	rm -rf *.gcno
 	rm -rf *.gcov
-	rm -rf $(OBJ)
+
+fclean: clean crit_clean
 	rm -rf vg*
 
 re: fclean all
@@ -55,4 +59,9 @@ unit_test: re
 	g++ -o ${CRIT_NAME} ${CRIT_SRC} ${CRIT_FLAG} $(CRIT_TEST) ${INCLUDE} ${LIB}
 	clear
 	./$(CRIT_NAME)
-	gcovr --exclude tests/
+
+branch: unit_test
+	gcovr --exclude tests/ --exclude lib/src/splitter/c_interface.cpp --branches
+
+coverage: unit_test
+	gcovr --exclude tests/ --exclude lib/src/splitter/c_interface.cpp
