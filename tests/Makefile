@@ -2,7 +2,8 @@ CRIT_NAME 	= 	unit_tests
 
 CRIT_FLAG	= 	--coverage --verbose -lcriterion
 
-CRIT_SRC 	= 	general_test.cpp
+CRIT_SRC 	= 	splitter/test_splitter_char_without_keep.cpp 		\
+				splitter/test_splitter_char_keep.cpp
 
 LIB 		= 	-L../lib -lparsing
 

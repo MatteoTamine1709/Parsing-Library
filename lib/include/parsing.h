@@ -2,15 +2,16 @@
 #define PARSING_H_
 
 #include <string>
-#include <vector> 
+#include <vector>
+#include "c_interface.h"
 using namespace std;
 
 class Parser
 {
 private:
 public:
-    vector<string> split(const string &str, const string &symb, bool save_split = false);
-    vector<string> split(const string &str, const vector<string> words, bool save_split = false);
+    vector<string> split_char(const string &str, const string &symb, bool save_split = false);
+    vector<string> split_word(const string &str, const vector<string> words, bool save_split = false);
     
 };
 

@@ -1,6 +1,7 @@
 SRC  =  src/perrno.cpp 						\
 		src/splitter/splitter_char.cpp 		\
-		src/splitter/splitter_word.cpp
+		src/splitter/splitter_word.cpp		\
+		src/splitter/c_interface.cpp
 
 INCLUDE = ./include/
 

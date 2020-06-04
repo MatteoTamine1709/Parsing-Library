@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "../../include/parsing.h"
 
-vector<string> Parser::split(const string &str, const vector<string> words, bool save_split)
+vector<string> Parser::split_word(const string &str, const vector<string> words, bool save_split)
 {
     vector<string> tab;
     bool found = false;
