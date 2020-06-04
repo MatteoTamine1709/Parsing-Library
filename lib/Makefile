@@ -3,11 +3,9 @@ SRC  =  src/perrno.cpp 						\
 		src/splitter/splitter_word.cpp		\
 		src/splitter/c_interface.cpp
 
-INCLUDE = ./include/
-
 NAME   =  libparsing.a
 
-CFLAGS = -g --coverage
+CXXFLAGS = -std=c++17 -g
 
 OBJ  =  $(SRC:.cpp=.o)
 

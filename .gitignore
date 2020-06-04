@@ -1,0 +1,9 @@
+*.a
+*.o
+vg*
+val*
+*.gcda
+*.gcno
+parser
+cparser
+unit_tests

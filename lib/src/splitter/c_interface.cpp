@@ -84,3 +84,31 @@ extern "C" char **pSplit_word(const char *str, const char **words, int save_spli
     ret[ret_val.size()] = NULL;
     return (ret);
 }
+
+extern "C" void test_variant()
+{
+    struct pType_s *arr = (pType_s *) malloc(sizeof(struct pType_s) * 3);
+    arr[0].type = pt_str;
+    arr[0].data = strdup("String value");
+    arr[1].type = pt_int;
+    arr[1].data = malloc(sizeof(int));
+    *((int *)(arr[1].data)) = 5;
+    arr[2].type = pt_dbl;
+    arr[2].data = malloc(sizeof(double));
+    *((double *)(arr[2].data)) = 27.3;
+
+    /* access the values.. */
+    for (int i = 0; i < 3; i++) {
+      switch(arr[i].type) {
+        case pt_str: printf( "String: %s\n", (char *)(arr[0].data) ); break;
+        case pt_int: printf( "Integer: %d\n", *((int *)(arr[1].data)) ); break;
+        case pt_dbl: printf( "Double: %f\n", *((double *)(arr[2].data)) ); break;
+      }
+    }
+
+    /* again, ALL data was dynamically allocated, so free each item's data */
+    for (int i = 0; i < 3; i++)
+      free(arr[i].data);
+    /* then free the malloc'ed array */
+    free(arr);
+}

@@ -16,5 +16,6 @@ int main(int argc, char const *argv[])
     }
     free(ret);
     free(symb);
+    test_variant();
     return 0;
 }
