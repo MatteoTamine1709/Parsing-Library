@@ -7,6 +7,8 @@ INCLUDE = ./include/
 
 NAME   =  libparsing.a
 
+CFLAGS = -g --coverage
+
 OBJ  =  $(SRC:.cpp=.o)
 
 all:  $(NAME)

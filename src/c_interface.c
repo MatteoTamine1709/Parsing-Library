@@ -4,13 +4,17 @@
 
 int main(int argc, char const *argv[])
 {
-    char *str = "salut toi";
-    char *symb = " ";
-    char **ret = pSplit_char(str, symb, 1);
+    const char *str = "salut toi";
+    const char **symb = (const char **) malloc(sizeof(char *) * 3);
+    symb[0] = "ut";
+    symb[1] = "to";
+    symb[2] = NULL;
+    char **ret = pSplit_word(str, symb, 0);
     for (int i = 0; ret[i]; i++) {
         printf("%s\n", ret[i]);
         free(ret[i]);
     }
     free(ret);
+    free(symb);
     return 0;
 }
