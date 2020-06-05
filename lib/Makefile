@@ -1,10 +1,16 @@
 SRC  =  src/perrno.cpp 						\
 		src/splitter/splitter_char.cpp 		\
-		src/splitter/splitter_word.cpp
+		src/splitter/splitter_word.cpp 		\
+		src/look_for/look_for.cpp 			\
+		src/look_for/flag_manager.cpp 		\
+		src/look_for/get_flag_num.cpp 		\
+		src/look_for/get_flag_string.cpp 	\
+		src/look_for/get_flag.cpp
 
 CSRC  =  src/perrno.cpp 					\
 		src/splitter/splitter_char.cpp 		\
 		src/splitter/splitter_word.cpp		\
+		src/look_for/look_for.cpp			\
 		src/splitter/c_interface.cpp
 
 NAME   	=  libparsing.a

@@ -5,16 +5,16 @@
 extern "C"
 #endif //__cplusplus
 
-enum pType_e
+enum pCType_e
 {
     pt_str,
     pt_int,
     pt_dbl
 };
 
-struct pType_s
+struct pCType_s
 {
-    pType_e type;
+    pCType_e type;
     void *data;
 };
 
