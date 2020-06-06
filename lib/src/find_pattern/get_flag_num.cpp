@@ -4,12 +4,13 @@
 
 //pType_v : string, char, int, unsigned int, float, long
 
-int get_int(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_int(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
     int val = 0;
     int neg = 1;
+
     while (str[i] == ' ' || str[i] == '\t')
         i++;
     if (str[i] == '-') {
@@ -25,12 +26,13 @@ int get_int(const std::string str, char stop, int index, std::vector<pType_v> *r
     return (i);
 }
 
-int get_uint(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_uint(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
     unsigned int val = 0;
     int neg = 1;
+
     while (str[i] == ' ' || str[i] == '\t')
         i++;
     if (str[i] == '-') {
@@ -46,7 +48,7 @@ int get_uint(const std::string str, char stop, int index, std::vector<pType_v> *
     return (i);
 }
 
-int get_float(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_float(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
@@ -54,6 +56,7 @@ int get_float(const std::string str, char stop, int index, std::vector<pType_v> 
     int neg = 1;
     bool dot = false;
     int start = i;
+
     while (str[i] == ' ' || str[i] == '\t')
         i++;
     if (str[i] == '-') {
@@ -73,12 +76,13 @@ int get_float(const std::string str, char stop, int index, std::vector<pType_v> 
     return (i);
 }
 
-int get_long(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_long(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
     long val = 0;
     int neg = 1;
+
     while (str[i] == ' ' || str[i] == '\t')
         i++;
     if (str[i] == '-') {

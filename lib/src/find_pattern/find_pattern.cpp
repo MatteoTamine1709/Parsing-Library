@@ -49,7 +49,7 @@ const std::string &str, const std::string &pattern, bool save_split)
                     int i = 0;
                     for (i = 0; pattern[p + 3 + i] != ']'; i++)
                         stops.push_back(pattern[p + 3 + i]);
-                    error = get_complex_string(stops, str, index, &temp);
+                    error = Parser::get_complex_string(stops, str, index, &temp);
                     p += i + 2;
                 } else {
                     error = get_pattern(pattern[p + 1], pattern[p + 2], str, index, &temp);

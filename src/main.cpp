@@ -23,9 +23,9 @@ void find_pattern(void)
 
 void splitter(void)
 {
-    const string test = "thisisiss olis a simple test of llloisooollllisi";
+    const string test = "this : 42";
 
-    const vector<string> o = {"isiss ol"};
+    const vector<string> o = {" : "};
     Parser p;
     vector<string> lol = p.split_word(test, o);
     for (int i = 0; i < lol.size(); i++)
@@ -52,7 +52,8 @@ void lemin_find_pattern(void)
 
 int main(int argc, char const *argv[])
 {
+    splitter();
     //lemin_find_pattern();
-    find_pattern();
+    //find_pattern();
     return 0;
 }

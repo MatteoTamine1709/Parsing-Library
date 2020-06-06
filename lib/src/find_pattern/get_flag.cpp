@@ -4,7 +4,7 @@
 
 //pType_v : string, char, int, unsigned int, float, long
 
-int get_star(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_star(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
@@ -16,7 +16,7 @@ int get_star(const std::string str, char stop, int index, std::vector<pType_v> *
     return (i);
 }
 
-int get_percentage(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_percentage(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index + 1;
     if (i >= str.length() || str[i - 1] != '%')
@@ -28,24 +28,24 @@ int get_percentage(const std::string str, char stop, int index, std::vector<pTyp
 
 int get_pattern(char flag, char stop, const std::string str, int index, std::vector<pType_v> *result)
 {
+    Parser p;
     std::string flags = "sn.cdufl*%";
     get_pattern_t flags_func[] = {
-        get_string,
-        get_number,
-        get_dot,
-        get_char,
-        get_int,
-        get_uint,
-        get_float,
-        get_long,
-        get_star,
-        get_percentage
+        &Parser::get_string,
+        &Parser::get_number,
+        &Parser::get_dot,
+        &Parser::get_char,
+        &Parser::get_int,
+        &Parser::get_uint,
+        &Parser::get_float,
+        &Parser::get_long,
+        &Parser::get_star,
+        &Parser::get_percentage
     };
-    for (int i = 0; i < flags.length(); i++) {
+    for (int i = 0; i < flags.length(); i++)
         if (flags[i] == flag) {
-            index = flags_func[i](str, stop, index, result);
+            index = (p.*flags_func[i])(str, stop, index, result);
             break;
         }
-    }
     return (index + 1);
 }

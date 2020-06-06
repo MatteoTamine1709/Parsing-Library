@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "../include/parsing.h"
 
+bool Parser::pSave_split;
+
 void str_perrno(void)
 {
     switch (perrno) {

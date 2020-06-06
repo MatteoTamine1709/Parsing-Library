@@ -4,7 +4,7 @@
 
 //pType_v : string, char, int, unsigned int, float, long
 
-int get_string(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_string(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
@@ -16,7 +16,7 @@ int get_string(const std::string str, char stop, int index, std::vector<pType_v>
     return (i);
 }
 
-int get_complex_string(std::string stops, const std::string str, int index, std::vector<pType_v> *result)
+int Parser::get_complex_string(std::string stops, const std::string str, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
@@ -30,7 +30,7 @@ int get_complex_string(std::string stops, const std::string str, int index, std:
     return (i + 1);
 }
 
-int get_number(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_number(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
@@ -44,7 +44,7 @@ int get_number(const std::string str, char stop, int index, std::vector<pType_v>
     return (i);
 }
 
-int get_dot(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_dot(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index;
     std::string temp;
@@ -56,7 +56,7 @@ int get_dot(const std::string str, char stop, int index, std::vector<pType_v> *r
     return (i);
 }
 
-int get_char(const std::string str, char stop, int index, std::vector<pType_v> *result)
+int Parser::get_char(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
     int i = index + 1;
     if (i >= str.length())
