@@ -87,7 +87,7 @@ extern "C" char **pSplit_word(const char *str, const char **words, int save_spli
 
 extern "C" void test_variant()
 {
-    struct pType_s *arr = (pType_s *) malloc(sizeof(struct pType_s) * 3);
+    struct pCType_s *arr = (pCType_s *) malloc(sizeof(struct pCType_s) * 3);
     arr[0].type = pt_str;
     arr[0].data = strdup("String value");
     arr[1].type = pt_int;

@@ -34,3 +34,11 @@ bool is_valid_int_char(char c)
         return (true);
     return (false);
 }
+
+bool is_stop(char c, std::string stops)
+{
+    for (int i = 0; i < stops.length(); i++)
+        if (c == stops[i])
+            return (true);
+    return (false);
+}

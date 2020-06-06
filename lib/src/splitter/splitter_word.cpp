@@ -1,8 +1,11 @@
 #include <stdlib.h>
 #include "../../include/parsing.h"
 
+bool Parser::pSave_split;
+
 std::vector<std::string> Parser::split_word(const std::string &str, const std::vector<std::string> words, bool save_split)
 {
+    Parser::pSave_split = save_split;
     std::vector<std::string> tab;
     bool found = false;
 
@@ -16,10 +19,9 @@ std::vector<std::string> Parser::split_word(const std::string &str, const std::v
         for (int j = 0; j < words.size(); j++) {
             if (str[i] == words[j][0]) { //Found start of a word?
                 int k = 0;
-                for (k = 0; k < words[j].length(); k++) {
+                for (k = 0; k < words[j].length(); k++)
                     if (str[i + k] != words[j][k])
                         break;
-                }
                 if (k == words[j].length()) {
                     if (temp.length() > 0)
                         tab.push_back(temp);

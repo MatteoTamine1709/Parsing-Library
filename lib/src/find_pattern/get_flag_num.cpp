@@ -6,7 +6,6 @@
 
 int get_int(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
-    printf("int\n");
     int i = index;
     std::string temp;
     int val = 0;
@@ -28,7 +27,6 @@ int get_int(const std::string str, char stop, int index, std::vector<pType_v> *r
 
 int get_uint(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
-    printf("unsigned int\n");
     int i = index;
     std::string temp;
     unsigned int val = 0;
@@ -50,7 +48,6 @@ int get_uint(const std::string str, char stop, int index, std::vector<pType_v> *
 
 int get_float(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
-    printf("float\n");
     int i = index;
     std::string temp;
     float val = 0;
@@ -79,7 +76,6 @@ int get_float(const std::string str, char stop, int index, std::vector<pType_v> 
 
 int get_long(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
-    printf("long\n");
     int i = index;
     std::string temp;
     long val = 0;

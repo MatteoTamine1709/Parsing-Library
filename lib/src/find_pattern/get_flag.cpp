@@ -6,10 +6,9 @@
 
 int get_star(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
-    printf("star\n");
     int i = index;
     std::string temp;
-    for (i = index; i < str.length() && is_valid_string_char(str[i]) && str[i] != stop; i++)
+    for (i = index; i < str.length() && str[i] != stop; i++)
         temp.push_back(str[i]);
     if (temp.length() == 0)
         return (-2);
@@ -19,23 +18,19 @@ int get_star(const std::string str, char stop, int index, std::vector<pType_v> *
 
 int get_percentage(const std::string str, char stop, int index, std::vector<pType_v> *result)
 {
-    printf("percentage\n");
-    int i = index;
-    std::string temp;
-    for (i = index; i < str.length() && is_valid_string_char(str[i]) && str[i] != stop; i++)
-        temp.push_back(str[i]);
-    if (temp.length() == 0)
+    int i = index + 1;
+    if (i >= str.length() || str[i - 1] != '%')
         return (-2);
-    result->push_back(temp);
+    if (Parser::pSave_split)
+        result->push_back(str[i - 1]);
     return (i);
 }
 
 int get_pattern(char flag, char stop, const std::string str, int index, std::vector<pType_v> *result)
 {
-    std::string flags = "sSn.cdufl*%";
+    std::string flags = "sn.cdufl*%";
     get_pattern_t flags_func[] = {
         get_string,
-        get_complex_string,
         get_number,
         get_dot,
         get_char,

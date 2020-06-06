@@ -6,28 +6,7 @@
 
 using namespace std;
 
-void test(void)
-{
-    vector<variant<string, char, int, float>> var;
-    int val = stoi(" \t3");
-    var.push_back(val);
-    var.push_back("yes");
-    var.push_back(3.5f);
-    var.push_back('E');
-
-    for (int i = 0; i < var.size(); i++) {
-        if (var[i].index() == 0)
-            cout << "string " << get<0>(var[i]) << endl;
-        if (var[i].index() == 1)
-           cout << "char " << get<1>(var[i]) << endl;
-        if (var[i].index() == 2)
-           cout << "int " << get<2>(var[i]) << endl;
-        if (var[i].index() == 3)
-           cout << "float " << get<3>(var[i]) << endl;
-    }
-}
-
-void look_for(void)
+void find_pattern(void)
 {
     Parser p;
     //const string test = "to:9xxx98p12pour\nlol:9aaa4p3aa";
@@ -37,9 +16,9 @@ void look_for(void)
     //const string pattern = "##%s\n%d-%d-%d\n";
     //const string test3 = "34a     oui";
     //const string pattern2 = "%da    %s";
-    const string test4 = "opl-98.olp-44";
-    const string pattern3 = "l%f.%s%u";
-    p.look_for(test4, pattern3, true);
+    const string test4 = "lmlmlmlmo42 09luiuiuid";
+    const string pattern3 = "%d %d";
+    p.find_pattern(test4, pattern3, false);
 }
 
 void splitter(void)
@@ -53,10 +32,26 @@ void splitter(void)
         cout << lol[i] << "\n";
 }
 
+void lemin_find_pattern(void)
+{
+    Parser p;
+    string str = "15\n##end\n1 23 3\n2 16 7\n#comment\n3 16 3\n4 16 5\n5 9 3\n6 1 0\n7 4 8\n##start\n0 9 5\n0-4\n0-6\n1-3\n4-3\n5-2\n3-5\n#another comment\n4-2\n2-1\n7-6\n7-2\n7-4\n6-5";
+    
+    printf("end start\n");
+    string pattern = "##%s\n%d %d %d";
+    p.find_pattern(str,pattern);
+
+    printf("rooms\n");
+    pattern = "\n%d %d %d";
+    p.find_pattern(str,pattern);
+
+    printf("tunnels\n");
+    pattern = "\n%d-%d";
+    p.find_pattern(str,pattern);
+}
+
 int main(int argc, char const *argv[])
 {
-    //splitter();
-    look_for();
-    //test();
+    lemin_find_pattern();
     return 0;
 }

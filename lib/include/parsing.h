@@ -15,10 +15,11 @@ class Parser
 {
 private:
 public:
+    static bool pSave_split;
     std::vector<std::string> split_char(const std::string &str, const std::string &symb, bool save_split = false);
     std::vector<std::string> split_word(const std::string &str, const std::vector<std::string> words, bool save_split = false);
-    std::vector<pType_v> look_for(const std::string &str, const std::string &pattern, bool save_split = false, bool ignore_space = true);
-    std::vector<pType_v> look_for(const std::string &str, const std::vector<std::string> pattern, bool save_split = false, bool ignore_space = true);
+    std::vector<std::vector<pType_v>> find_pattern(const std::string &str, const std::string &pattern, bool save_split = false);
+    std::vector<pType_v> find_pattern(const std::string &str, const std::vector<std::string> pattern, bool save_split = false);
 };
 
 /*
@@ -33,6 +34,7 @@ public:
 ** %f       => will convert the following number into float (error if no number found)          float
 ** %l       => will convert the following number into long (error if no number found)           long
 ** *        => will read everything                                                             String
+** %        => will make a simple percentage                                                    Nothing (split)
 **
 ** All of them will stop once they find the next char in the pattern
 ** For example:
@@ -50,6 +52,7 @@ bool is_flag(char c);
 bool is_valid_string_char(char c);
 bool is_valid_string_dot(char c);
 bool is_valid_int_char(char c);
+bool is_stop(char c, std::string stops);
 int get_string(const std::string str, char stop, int index, std::vector<pType_v> *result);
 int get_int(const std::string str, char stop, int index, std::vector<pType_v> *result);
 int get_int(const std::string str, char stop, int index, std::vector<pType_v> *result);
@@ -57,7 +60,7 @@ int get_uint(const std::string str, char stop, int index, std::vector<pType_v> *
 int get_float(const std::string str, char stop, int index, std::vector<pType_v> *result);
 int get_long(const std::string str, char stop, int index, std::vector<pType_v> *result);
 int get_string(const std::string str, char stop, int index, std::vector<pType_v> *result);
-int get_complex_string(const std::string str, char stop, int index, std::vector<pType_v> *result);
+int get_complex_string(std::string stops, const std::string str, int index, std::vector<pType_v> *result);
 int get_number(const std::string str, char stop, int index, std::vector<pType_v> *result);
 int get_dot(const std::string str, char stop, int index, std::vector<pType_v> *result);
 int get_char(const std::string str, char stop, int index, std::vector<pType_v> *result);

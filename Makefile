@@ -19,13 +19,21 @@ CRIT_NAME 	= 	unit_tests
 CRIT_FLAG	= 	--coverage --verbose -lcriterion
 
 CRIT_TEST = 	tests/compare_string_vector.cpp 						\
+				tests/find_pattern/display_vector_variant.cpp 			\
 				tests/splitter/test_splitter_char_without_keep.cpp 		\
 				tests/splitter/test_splitter_char_keep.cpp 				\
 				tests/splitter/test_splitter_word_without_keep.cpp 		\
-				tests/splitter/test_splitter_word_keep.cpp
+				tests/splitter/test_splitter_word_keep.cpp 				\
+				tests/find_pattern/test_find_pattern_without_keep_decimal.cpp \
+				tests/find_pattern/test_find_pattern_without_keep_general.cpp
 
 CRIT_SRC 	= 	lib/src/splitter/splitter_char.cpp 		\
-				lib/src/splitter/splitter_word.cpp
+				lib/src/splitter/splitter_word.cpp 		\
+				lib/src/find_pattern/find_pattern.cpp 		\
+				lib/src/find_pattern/flag_manager.cpp 		\
+				lib/src/find_pattern/get_flag_num.cpp 		\
+				lib/src/find_pattern/get_flag_string.cpp 	\
+				lib/src/find_pattern/get_flag.cpp
 
 all:	build_lib $(NAME)
 
