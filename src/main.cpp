@@ -16,9 +16,9 @@ void find_pattern(void)
     //const string pattern = "##%s\n%d-%d-%d\n";
     //const string test3 = "34a     oui";
     //const string pattern2 = "%da    %s";
-    const string test4 = "lmlmlmlmo42 09luiuiuid";
-    const string pattern3 = "%d %d";
-    p.find_pattern(test4, pattern3, false);
+    const string test4 = "lol";
+    const string pattern3 = "%c";
+    vector<vector<pType_v>> ret = p.find_pattern(test4, pattern3, false);
 }
 
 void splitter(void)
@@ -52,6 +52,7 @@ void lemin_find_pattern(void)
 
 int main(int argc, char const *argv[])
 {
-    lemin_find_pattern();
+    //lemin_find_pattern();
+    find_pattern();
     return 0;
 }

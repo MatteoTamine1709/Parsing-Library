@@ -9,8 +9,11 @@ extern "C" {
     enum pCType_e
     {
         pt_str,
+        pt_char,
         pt_int,
-        pt_dbl
+        pt_uint,
+        pt_fl,
+        pt_lg
     };
 
     struct pCType_s
@@ -20,7 +23,7 @@ extern "C" {
     };
     char **pSplit_char(const char *str, const char *symb, int save_split);
     char **pSplit_word(const char *str, const char **words, int save_split);
-    void test_variant();
+    pCType_s **pFind_pattern(const char *str, const char *symb, int save_split);
 }
 
 #endif

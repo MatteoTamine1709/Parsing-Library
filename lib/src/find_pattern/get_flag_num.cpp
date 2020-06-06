@@ -66,7 +66,6 @@ int get_float(const std::string str, char stop, int index, std::vector<pType_v> 
             dot = true;
         temp.push_back(str[i]);
     }
-    std::cout << temp << std::endl;
     if (temp.length() == 0)
         return (-2);
     val = std::stof(temp) * neg;

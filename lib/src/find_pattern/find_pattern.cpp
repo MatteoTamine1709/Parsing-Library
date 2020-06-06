@@ -37,7 +37,7 @@ const std::string &str, const std::string &pattern, bool save_split)
     int start = 0;
     int p = 0;
 
-    if (pattern.length() == 0)
+    if (pattern.length() == 0 || str.length() == 0)
         return (result);
     while (index < str.length()) {
         std::vector<pType_v> temp;
@@ -67,6 +67,8 @@ const std::string &str, const std::string &pattern, bool save_split)
                 }
             } else {
                 std::string temp_s;
+                if (index == 0)
+                    index++;
                 while (p < pattern.length() && index - 1 < str.length() && pattern[p] == str[index - 1] && pattern[p] != '%') {
                     temp_s.push_back(str[index - 1]);
                     p++;
@@ -89,7 +91,8 @@ const std::string &str, const std::string &pattern, bool save_split)
             if (str[index - 1] == pattern[p - 1] ||
                 (pattern[pattern.length() - 2] == '%' && is_flag(pattern[pattern.length() - 1])) ||
                 is_stop(str[index - 1], stops)) {
-                result.push_back(temp);
+                if (temp.size() > 0)
+                    result.push_back(temp);
                 temp.clear();
                 index--;
             } else {

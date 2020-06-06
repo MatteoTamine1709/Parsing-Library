@@ -6,15 +6,15 @@
 
 using namespace std;
 
-TestSuite(find_pattern_general_without_keep_suite);
+TestSuite(find_pattern_general_keep_suite);
 
-Test(find_pattern_general_without_keep_suite, no_str)
+Test(find_pattern_general_keep_suite, no_str)
 {
     Parser p;
     int error = -1;
     const string str = "";
     const string pattern = "%d";
-    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, false);
+    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, true);
     vector<vector<pType_v>> correct;
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of recognition: ret:%d correct:%d",
@@ -40,13 +40,13 @@ ret:%d correct:%d", error, ret[error].size(), correct[error].size());
     cr_assert(error == -1, "Error on comparing variant: %d", error);
 }
 
-Test(find_pattern_general_without_keep_suite, no_pattern)
+Test(find_pattern_general_keep_suite, no_pattern)
 {
     Parser p;
     int error = -1;
     const string str = "42";
     const string pattern = "";
-    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, false);
+    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, true);
     vector<vector<pType_v>> correct;
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of recognition: ret:%d correct:%d",
@@ -72,13 +72,13 @@ ret:%d correct:%d", error, ret[error].size(), correct[error].size());
     cr_assert(error == -1, "Error on comparing variant: %d", error);
 }
 
-Test(find_pattern_general_without_keep_suite, no_input)
+Test(find_pattern_general_keep_suite, no_input)
 {
     Parser p;
     int error = -1;
     const string str = "";
     const string pattern = "";
-    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, false);
+    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, true);
     vector<vector<pType_v>> correct;
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of recognition: ret:%d correct:%d",
@@ -104,13 +104,13 @@ ret:%d correct:%d", error, ret[error].size(), correct[error].size());
     cr_assert(error == -1, "Error on comparing variant: %d", error);
 }
 
-Test(find_pattern_general_without_keep_suite, no_pattern_in_str)
+Test(find_pattern_general_keep_suite, no_pattern_in_str)
 {
     Parser p;
     int error = -1;
     const string str = "iubkbkj";
     const string pattern = "%d";
-    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, false);
+    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, true);
     vector<vector<pType_v>> correct;
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of recognition: ret:%d correct:%d",
@@ -136,14 +136,14 @@ ret:%d correct:%d", error, ret[error].size(), correct[error].size());
     cr_assert(error == -1, "Error on comparing variant: %d", error);
 }
 
-Test(find_pattern_general_without_keep_suite, only_split_pattern)
+Test(find_pattern_general_keep_suite, only_split_pattern)
 {
     Parser p;
     int error = -1;
     const string str = "iubkbkj";
     const string pattern = "iubkbkj";
-    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, false);
-    vector<vector<pType_v>> correct;
+    vector<vector<pType_v>> ret = p.find_pattern(str, pattern, true);
+    vector<vector<pType_v>> correct = {{"iubkbkj"}};
 
     cr_assert(ret.size() == correct.size(), "Not the same amount of recognition: ret:%d correct:%d",
         ret.size(), correct.size());
