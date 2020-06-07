@@ -2,7 +2,7 @@ SRC	=	src/main.cpp
 
 CSRC	=	src/c_interface.c
 
-CFLAGS = 	-W -Wall -Wextra
+CFLAGS = 	-W -Wall -Wextra -g
 
 LIB = -L./lib -lparsing
 

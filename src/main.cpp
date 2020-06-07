@@ -16,9 +16,11 @@ void find_pattern(void)
     //const string pattern = "##%s\n%d-%d-%d\n";
     //const string test3 = "34a     oui";
     //const string pattern2 = "%da    %s";
-    const string test4 = "lol";
-    const string pattern3 = "%c";
+    const string test4 = "4294967296";
+    const string pattern3 = "%u";
     vector<vector<pType_v>> ret = p.find_pattern(test4, pattern3, false);
+    if (ret.size() > 0)
+        cout << get<3>(ret[0][0]) << endl;
 }
 
 void splitter(void)
@@ -52,8 +54,12 @@ void lemin_find_pattern(void)
 
 int main(int argc, char const *argv[])
 {
-    splitter();
+    float kok = stof("429496729500000.0");
+    cout << kok << endl;
+    //splitter();
     //lemin_find_pattern();
-    //find_pattern();
+    find_pattern();
+    std::cout << "Maximum value for float: " << std::numeric_limits<float>::max() << '\n';
+    printf("%f\n", 429496729500000.0f);
     return 0;
 }

@@ -19,10 +19,13 @@ int Parser::get_int(const std::string str, char stop, int index, std::vector<pTy
     }
     for (; i < str.length() && is_valid_int_char(str[i]) && str[i] != stop; i++)
         temp.push_back(str[i]);
+    long verif = stol(temp);
     if (temp.length() == 0)
         return (-2);
-    val = std::stoi(temp) * neg;
-    result->push_back(val);
+    if (verif <= 2147483647) {
+        val = std::stoi(temp) * neg;
+        result->push_back(val);
+    }
     return (i);
 }
 
@@ -43,8 +46,11 @@ int Parser::get_uint(const std::string str, char stop, int index, std::vector<pT
         temp.push_back(str[i]);
     if (temp.length() == 0)
         return (-2);
-    val = (unsigned int) (std::stoi(temp) * neg);
-    result->push_back(val);
+    long verif = std::stol(temp);
+    if (verif <= 4294967295) {
+        val = (unsigned int) (verif * neg);
+        result->push_back(val);
+    }
     return (i);
 }
 
@@ -94,7 +100,7 @@ int Parser::get_long(const std::string str, char stop, int index, std::vector<pT
     }
     if (temp.length() == 0)
         return (-2);
-    val = std::stof(temp) * neg;
+    val = std::stol(temp) * neg;
     result->push_back(val);
     return (i);
 }

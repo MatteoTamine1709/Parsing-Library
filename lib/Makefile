@@ -14,7 +14,7 @@ NAME   	=  libparsing.a
 
 CNAME	=  libcparsing.a
 
-CXXFLAGS = -std=c++17
+CXXFLAGS = -std=c++17 -g
 
 OBJ  =  $(SRC:.cpp=.o)
 
