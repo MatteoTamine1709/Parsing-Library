@@ -59,7 +59,7 @@ int main(int argc, char const *argv[])
     //splitter();
     //lemin_find_pattern();
     find_pattern();
-    std::cout << "Maximum value for float: " << std::numeric_limits<float>::max() << '\n';
+    std::cout << "Maximum value for float: " << std::numeric_limits<unsigned int>::max() << '\n';
     printf("%f\n", 429496729500000.0f);
     return 0;
 }

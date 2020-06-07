@@ -19,9 +19,9 @@ int Parser::get_int(const std::string str, char stop, int index, std::vector<pTy
     }
     for (; i < str.length() && is_valid_int_char(str[i]) && str[i] != stop; i++)
         temp.push_back(str[i]);
-    long verif = stol(temp);
     if (temp.length() == 0)
         return (-2);
+    long verif = stol(temp);
     if (verif <= 2147483647) {
         val = std::stoi(temp) * neg;
         result->push_back(val);
@@ -77,8 +77,12 @@ int Parser::get_float(const std::string str, char stop, int index, std::vector<p
     }
     if (temp.length() == 0)
         return (-2);
-    val = std::stof(temp) * neg;
-    result->push_back(val);
+    try {
+        val = std::stof(temp) * neg;
+        result->push_back(val);
+    } catch (...) {
+        return (i);
+    }
     return (i);
 }
 
