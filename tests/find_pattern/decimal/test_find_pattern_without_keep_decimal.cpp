@@ -6,9 +6,9 @@
 
 using namespace std;
 
-TestSuite(find_pattern_num_without_keep_suite);
+TestSuite(find_pattern_decimal_without_keep_suite);
 
-Test(find_pattern_num_without_keep_suite, simple_d)
+Test(find_pattern_decimal_without_keep_suite, simple_d)
 {
     Parser p;
     int error = -1;
@@ -41,7 +41,7 @@ ret:%d correct:%d", error, ret[error].size(), correct[error].size());
         error);
 }
 
-Test(find_pattern_num_without_keep_suite, multiple_d)
+Test(find_pattern_decimal_without_keep_suite, multiple_d)
 {
     Parser p;
     int error = -1;
@@ -74,7 +74,7 @@ ret:%d correct:%d", error, ret[error].size(), correct[error].size());
         error);
 }
 
-Test(find_pattern_num_without_keep_suite, simple_d_multiple_pattern)
+Test(find_pattern_decimal_without_keep_suite, simple_d_multiple_pattern)
 {
     Parser p;
     int error = -1;
@@ -107,7 +107,7 @@ ret:%d correct:%d", error, ret[error].size(), correct[error].size());
         error);
 }
 
-Test(find_pattern_num_without_keep_suite, multiple_d_multiple_pattern)
+Test(find_pattern_decimal_without_keep_suite, multiple_d_multiple_pattern)
 {
     Parser p;
     int error = -1;

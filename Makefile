@@ -24,8 +24,11 @@ CRIT_TEST = 	tests/compare_string_vector.cpp 						\
 				tests/splitter/test_splitter_char_keep.cpp 				\
 				tests/splitter/test_splitter_word_without_keep.cpp 		\
 				tests/splitter/test_splitter_word_keep.cpp 				\
-				tests/find_pattern/test_find_pattern_without_keep_decimal.cpp \
+				tests/find_pattern/decimal/test_find_pattern_without_keep_decimal.cpp \
+				tests/find_pattern/float/test_find_pattern_without_keep_float.cpp \
 				tests/find_pattern/test_find_pattern_without_keep_general.cpp \
+				tests/find_pattern/decimal/test_find_pattern_keep_decimal.cpp \
+				tests/find_pattern/float/test_find_pattern_keep_float.cpp \
 				tests/find_pattern/test_find_pattern_keep_general.cpp
 
 CRIT_SRC 	= 	lib/src/splitter/splitter_char.cpp 		\

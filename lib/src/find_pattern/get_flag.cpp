@@ -10,9 +10,8 @@ int Parser::get_star(const std::string str, char stop, int index, std::vector<pT
     std::string temp;
     for (i = index; i < str.length() && str[i] != stop; i++)
         temp.push_back(str[i]);
-    if (temp.length() == 0)
-        return (-2);
-    result->push_back(temp);
+    if (temp.length() > 0)
+        result->push_back(temp);
     return (i);
 }
 

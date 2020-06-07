@@ -4,29 +4,6 @@
 
 //pType_v : string, char, int, unsigned int, float, long
 
-void display_result(std::vector<std::vector<pType_v>> result)
-{
-    std::cout << "========================" << std::endl;
-    for (int i = 0; i < result.size(); i++) {
-        for (int j = 0; j < result[i].size(); j++) {
-            if (result[i][j].index() == 0)
-                std::cout << "string \"" << std::get<0>(result[i][j]) << "\" ";
-            if (result[i][j].index() == 1)
-               std::cout << "char " << std::get<1>(result[i][j]) << " ";
-            if (result[i][j].index() == 2)
-               std::cout << "int " << std::get<2>(result[i][j]) << " ";
-            if (result[i][j].index() == 3)
-               std::cout << "unsigned " << std::get<3>(result[i][j]) << " ";
-            if (result[i][j].index() == 4)
-               std::cout << "float " << std::get<4>(result[i][j]) << " ";
-            if (result[i][j].index() == 5)
-               std::cout << "long " << std::get<5>(result[i][j]) << " ";
-       }
-       std::cout << std::endl;
-    }
-    std::cout << "========================" << std::endl;
-}
-
 std::vector<std::vector<pType_v>> Parser::find_pattern(
 const std::string &str, const std::string &pattern, bool save_split)
 {
