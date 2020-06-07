@@ -27,11 +27,16 @@ CRIT_TEST = 	tests/compare_string_vector.cpp 						\
 				tests/find_pattern/decimal/test_find_pattern_without_keep_decimal.cpp \
 				tests/find_pattern/float/test_find_pattern_without_keep_float.cpp \
 				tests/find_pattern/unsigned/test_find_pattern_without_keep_unsigned.cpp \
+				tests/find_pattern/long/test_find_pattern_without_keep_long.cpp \
+				tests/find_pattern/string/test_find_pattern_without_keep_string.cpp \
 				tests/find_pattern/decimal/test_find_pattern_keep_decimal.cpp \
 				tests/find_pattern/float/test_find_pattern_keep_float.cpp \
 				tests/find_pattern/unsigned/test_find_pattern_keep_unsigned.cpp \
-				tests/find_pattern/test_find_pattern_without_keep_general.cpp \
-				tests/find_pattern/test_find_pattern_keep_general.cpp
+				tests/find_pattern/long/test_find_pattern_keep_long.cpp \
+				tests/find_pattern/test_find_pattern_without_keep_general_num.cpp \
+				tests/find_pattern/test_find_pattern_keep_general_num.cpp 		\
+				tests/find_pattern/test_find_pattern_without_keep_general_string.cpp \
+				tests/find_pattern/test_find_pattern_keep_general_string.cpp
 
 CRIT_SRC 	= 	lib/src/splitter/splitter_char.cpp 		\
 				lib/src/splitter/splitter_word.cpp 		\

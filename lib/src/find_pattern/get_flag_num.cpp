@@ -104,7 +104,11 @@ int Parser::get_long(const std::string str, char stop, int index, std::vector<pT
     }
     if (temp.length() == 0)
         return (-2);
-    val = std::stol(temp) * neg;
-    result->push_back(val);
+    try {
+        val = std::stol(temp) * neg;
+        result->push_back(val);
+    } catch (...) {
+        return (i);
+    }
     return (i);
 }
